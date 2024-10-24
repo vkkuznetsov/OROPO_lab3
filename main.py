@@ -2,7 +2,7 @@ from copy import deepcopy
 
 import requests
 
-TOKEN_sec = "vk1.a.MzZQtc6_qagyPeU5eo2sk3PWSaAA6f-GZ-jkmW7p2tccvaBpeQp66RRgy_L4_koIq6O6PkHT59Nbr84uWZ2RCj_bWzNBWLwQGruXRllx2lQ_xp9pZ2ay2GaFwDtkGH_5IeC82gveVOUSk2v_DEIDxgq0W5sgDPz2blze-J87y2mZDW3hG4DT98eJs4kIMQ_j"
+TOKEN_sec = "vk1.a.iD8A2g4QA6gAe0x0QmqlmwFy8rz0QjMUHltAnTLkFqIUPfLWO8uz56n1gSIvyL02YnyhBrTGHGkFjhjvTp38UbtVamIhzHeeYg5lSxHpzblCnQv1XMZIiwjq7Pz79rQ5mSkpBaDkkPP8W8n41ve_vpwE28R7X2rtPUW8rtmlGoJfJU1poVPSSi9bY7xkjUzh"
 USER_ID_sec = "287263552"
 
 
@@ -45,6 +45,7 @@ def get_followers(params):
 if __name__ == "__main__":
 
     TOKEN = input("Enter TOKEN (enter to use mine) = ")
+    print(TOKEN_sec)
     if not TOKEN:
         TOKEN = TOKEN_sec
 
@@ -59,6 +60,7 @@ if __name__ == "__main__":
     }
 
     result = get_friends(params)
+    print(result)
     process_friend_list(result['response']['items'])
 
     result = get_groups(params)
