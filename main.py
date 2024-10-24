@@ -1,9 +1,9 @@
 from copy import deepcopy
-
+import json
 import requests
 
-TOKEN_sec = "vk1.a.iD8A2g4QA6gAe0x0QmqlmwFy8rz0QjMUHltAnTLkFqIUPfLWO8uz56n1gSIvyL02YnyhBrTGHGkFjhjvTp38UbtVamIhzHeeYg5lSxHpzblCnQv1XMZIiwjq7Pz79rQ5mSkpBaDkkPP8W8n41ve_vpwE28R7X2rtPUW8rtmlGoJfJU1poVPSSi9bY7xkjUzh"
-USER_ID_sec = "287263552"
+TOKEN_sec = ""
+USER_ID_sec = "368564385"
 
 
 def get_friends(params):
@@ -15,9 +15,7 @@ def get_friends(params):
 
 
 def process_friend_list(friend_list):
-    for friend in friend_list:
-        formatted_friend = friend['first_name'] + " " + friend['last_name']
-        print(formatted_friend)
+    return [friend['first_name'] + " " + friend['last_name'] for friend in friend_list]
 
 
 def get_groups(params):
@@ -29,9 +27,7 @@ def get_groups(params):
 
 
 def process_group_list(group_list):
-    for group in group_list:
-        formatted_friend = group['name'] + " "
-        print(formatted_friend)
+    return [group['name'] for group in group_list]
 
 
 def get_followers(params):
@@ -44,8 +40,7 @@ def get_followers(params):
 
 if __name__ == "__main__":
 
-    TOKEN = input("Enter TOKEN (enter to use mine) = ")
-    print(TOKEN_sec)
+    TOKEN = input("Enter TOKEN = ")
     if not TOKEN:
         TOKEN = TOKEN_sec
 
@@ -58,13 +53,15 @@ if __name__ == "__main__":
         "v": "5.199",
         "access_token": TOKEN,
     }
+    answer = dict()
 
     result = get_friends(params)
-    print(result)
-    process_friend_list(result['response']['items'])
+    answer['friends'] = process_friend_list(result['response']['items'])
 
     result = get_groups(params)
-    process_group_list(result['response']['items'])
+    answer['groups'] = process_group_list(result['response']['items'])
 
     result = get_followers(params)
-    process_friend_list(result['response']['items'])
+    answer['followers'] = process_friend_list(result['response']['items'])
+    with open('user.json', 'w', encoding='UTF-8') as f:
+        json.dump(answer, f, ensure_ascii=False, indent=4)
