@@ -1,27 +1,39 @@
 # OROPO_lab3
 # Установка
-Клонируем репозиторий
+1. Клонируем репозиторий
 ```bash
 git clone https://github.com/vkkuznetsov/OROPO_lab3.git
 ```
-Переходим в папку с проектом
+2. Переходим в папку с проектом
 ```bash
 cd OROPO_lab3
 ```
-Создаем виртуальное оркжуение
+3. Создаем виртуальное оркжуение
 ```bash
 python -m venv venv
 ```
-Активируем его  
+4. Активируем его
+
 LINUX
 ```bash
 source venv/bin/activate
 ```
-WINDOWS
+WINDOWS (cmd)
+(нужно разрешить выполнение в powershell)
 ```bash
 .\venv\Scripts\activate
 ```
-Устанавливаем зависимости
+5. Устанавливаем зависимости
 ```bash
 pip install -r requirements.txt
 ```
+6. Запускаем приложение
+```bash
+python main.py
+```
+Использование  
+1. Вводим токен от vk api
+2. Вводим айди пользователя (по умолчанию уже стоит)
+3. Файлы сохраняются в корень проекта followers.json, friends.json, groups.json 
+еще плюсом выводятся пути до файлов
+4. Открываем файлы любым удобным способом
