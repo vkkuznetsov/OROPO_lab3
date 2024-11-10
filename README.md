@@ -19,8 +19,12 @@ LINUX
 source venv/bin/activate
 ```
 WINDOWS (cmd)
-(нужно разрешить выполнение в powershell)
 ```bash
+.\venv\Scripts\activate
+```
+Если powershell
+```bash
+Set-ExecutionPolicy RemoteSigned
 .\venv\Scripts\activate
 ```
 5. Устанавливаем зависимости
